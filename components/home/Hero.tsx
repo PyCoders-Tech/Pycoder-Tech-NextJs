@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import Link from 'next/link';
 
 export default function Hero() {
@@ -13,15 +13,16 @@ export default function Hero() {
   const [contactHovered, setContactHovered] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   
-  const textOptions = [
+  // Use useMemo to prevent the array from being recreated on each render
+  const textOptions = useMemo(() => [
     "ML pipelines",
     "data processing at scale",
     "AI-driven solutions",
     "LLM fine-tuning",
     "Python excellence"
-  ];
+  ], []);
 
-  const codeLines = [
+  const codeLines = useMemo(() => [
     `import pycoder`,
     `\n\nsolution = pycoder.solve(`,
     `\n    your_complex_problem,`,
@@ -29,7 +30,7 @@ export default function Hero() {
     `\n    optimize_performance=True`,
     `\n)`,
     `\n\n# Deployment ready in 3.2s`
-  ];
+  ], []);
 
   // Entry animation - Client-side only
   useEffect(() => {
