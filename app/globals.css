@@ -3,6 +3,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Animation variables */
+  --transition-fast: 300ms;
+  --transition-medium: 500ms;
+  --transition-slow: 700ms;
+  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --easing-out: cubic-bezier(0, 0, 0.2, 1);
 }
 
 @theme inline {
@@ -24,3 +32,90 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Animation Utilities */
+.fade-in {
+  opacity: 0;
+  transition: opacity var(--transition-medium) var(--easing-out);
+}
+
+.fade-in.active {
+  opacity: 1;
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 
+    transform var(--transition-medium) var(--easing-out),
+    opacity var(--transition-medium) var(--easing-out);
+}
+
+.slide-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-down {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: 
+    transform var(--transition-medium) var(--easing-out),
+    opacity var(--transition-medium) var(--easing-out);
+}
+
+.slide-down.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-right {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: 
+    transform var(--transition-medium) var(--easing-out),
+    opacity var(--transition-medium) var(--easing-out);
+}
+
+.slide-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-left {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: 
+    transform var(--transition-medium) var(--easing-out),
+    opacity var(--transition-medium) var(--easing-out);
+}
+
+.slide-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scale-in {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: 
+    transform var(--transition-medium) var(--easing-out),
+    opacity var(--transition-medium) var(--easing-out);
+}
+
+.scale-in.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Animation delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+.delay-600 { transition-delay: 600ms; }
+.delay-700 { transition-delay: 700ms; }
+.delay-800 { transition-delay: 800ms; }
+.delay-900 { transition-delay: 900ms; }
+.delay-1000 { transition-delay: 1000ms; }
