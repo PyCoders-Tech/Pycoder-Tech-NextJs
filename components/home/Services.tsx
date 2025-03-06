@@ -209,7 +209,7 @@ const Services = () => {
         <div className={`text-center mb-16 slide-down ${isHeaderVisible ? 'active' : ''}`}>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            We leverage Python's powerful ecosystem to deliver scalable, efficient solutions for your business
+            We leverage Python&apos;s powerful ecosystem to deliver scalable, efficient solutions for your business
           </p>
         </div>
 

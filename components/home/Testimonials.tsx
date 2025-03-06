@@ -47,7 +47,7 @@ const testimonials = [
   },
   {
     id: 5,
-    content: "Pycoder Tech's consulting services gave us the roadmap we needed to modernize our Python-based architecture. Their insights saved us months of trial and error.",
+    content: "Pycoder Tech&apos;s consulting services gave us the roadmap we needed to modernize our Python-based architecture. Their insights saved us months of trial and error.",
     author: "Lisa Thompson",
     position: "Enterprise Architect, FinServ Co.",
     image: "/api/placeholder/64/64",
@@ -91,6 +91,17 @@ const TestimonialsCarousel = () => {
     return () => observer.disconnect();
   }, []);
   
+  // Go to slide function as a callback to avoid recreation
+  const goToSlide = useCallback((index: number) => {
+    if (index === activeIndex) return;
+    
+    setIsFading(true);
+    setTimeout(() => {
+      setActiveIndex(index);
+      setIsFading(false);
+    }, 500);
+  }, [activeIndex]);
+  
   // Auto-advance the carousel
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -108,18 +119,7 @@ const TestimonialsCarousel = () => {
         clearTimeout(autoPlayTimerRef.current);
       }
     };
-  }, [isAutoPlaying, activeIndex]);
-  
-  // Navigate to a specific slide
-  const goToSlide = useCallback((index: number) => {
-    if (index === activeIndex) return;
-    
-    setIsFading(true);
-    setTimeout(() => {
-      setActiveIndex(index);
-      setIsFading(false);
-    }, 500);
-  }, [activeIndex]);
+  }, [isAutoPlaying, activeIndex, goToSlide]);
   
   // Navigate to the next slide
   const nextSlide = useCallback(() => {
@@ -260,8 +260,8 @@ const TestimonialsCarousel = () => {
                   {/* Quote content */}
                   <div className="relative">
                     {/* Quote mark */}
-                    <div className="absolute -top-2 -left-3 text-5xl font-serif text-gray-700 opacity-60 select-none">"</div>
-                    <div className="absolute -bottom-16 -right-3 text-5xl font-serif text-gray-700 opacity-60 select-none transform rotate-180">"</div>
+                    <div className="absolute -top-2 -left-3 text-5xl font-serif text-gray-700 opacity-60 select-none">&quot;</div>
+                    <div className="absolute -bottom-16 -right-3 text-5xl font-serif text-gray-700 opacity-60 select-none transform rotate-180">&quot;</div>
                     
                     <p className="text-xl md:text-2xl text-gray-300 relative z-10 pl-5 leading-relaxed mb-8">
                       {testimonials[activeIndex].content}
