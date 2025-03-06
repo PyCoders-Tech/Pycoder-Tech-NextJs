@@ -106,7 +106,8 @@ export default function FeaturedProducts() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [scrollPosition, setScrollPosition] = useState(0);
   const imageRef = useRef<HTMLDivElement>(null);
-  const featureRefs = useRef<(HTMLLIElement | null)[]>([]);
+  // Fix: Create a mutable ref object with the correct type
+  const featureRefs = useRef<Array<HTMLLIElement | null>>([]);
   const [showParticles, setShowParticles] = useState(false);
 
   // Track scroll for parallax effects - client-side only
@@ -453,7 +454,7 @@ export default function FeaturedProducts() {
                     {activeProduct.features.map((feature, index) => (
                       <li 
                         key={index} 
-                        ref={el => featureRefs.current[index] = el}
+                        ref={(el) => { featureRefs.current[index] = el; }}
                         className="flex items-start transition-all duration-300"
                         onMouseEnter={() => setActiveFeature(index)}
                         onMouseLeave={() => setActiveFeature(null)}
