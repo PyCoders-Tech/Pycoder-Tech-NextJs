@@ -413,7 +413,7 @@ const CTASection = () => {
                 </div>
                 <h4 className="text-xl font-bold text-green-300 mb-1">Thank you for subscribing!</h4>
                 <p className="text-green-200/80 text-sm">
-                  We'll send you our best content directly to your inbox. No spam, just valuable Python insights.
+                  We&apos;ll send you our best content directly to your inbox. No spam, just valuable Python insights.
                 </p>
               </div>
             )}
